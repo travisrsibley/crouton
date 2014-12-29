@@ -81,6 +81,8 @@ fi
 # Launch system-wide triggerhappy if it isn't running
 mkdir -m 775 -p /tmp/crouton-lock
 {
+    chmod -Rf g+rwX '/tmp/crouton-lock' || true
+    chgrp -Rf crouton '/tmp/crouton-lock' || true
     # Only let one instance *really* run at a time
     flock 3
     cmdprev='/usr/local/bin/croutoncycle p'
